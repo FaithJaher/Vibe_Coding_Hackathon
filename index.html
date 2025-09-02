@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fajao Exam Bank - Quality Educational Resources</title>
+    <style>
+        :root {
+            --primary: #4a6da7;
+            --secondary: #7b9acc;
+            --accent: #f47a60;
+            --premium: #ffd700;
+            --light: #f5f7fa;
+            --dark: #2c3e50;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--light);
+        }
+        
+        .user-section {
+            display: flex;
+            align-items: center;
+        }
+        
+        .user-info {
+            margin-right: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .user-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .auth-buttons button {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .auth-buttons button:hover {
+            background-color: #e3694f;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .search-bar {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+        }
+        
+        .search-bar input {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+        }
+        
+        .search-bar button {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 3rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--dark);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        /* Exam List */
+        .exam-section {
+            padding: 3rem 0;
+            background-color: var(--light);
+        }
+        
+        .exam-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .filter-select {
+            padding: 0.5rem;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        
+        .exam-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .exam-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .premium-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--premium);
+            color: var(--dark);
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .exam-card-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem;
+        }
+        
+        .exam-card-body {
+            padding: 1.5rem;
+        }
+        
+        .exam-card-footer {
+            padding: 1rem;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .download-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .download-btn.premium {
+            background-color: var(--premium);
+            color: var(--dark);
+        }
+        
+        /* Upload Section */
+        .upload-section {
+            padding: 3rem 0;
+        }
+        
+        .upload-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .submit-btn {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        /* Auth Modals */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Premium Section */
+        .premium-section {
+            padding: 3rem 0;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            text-align: center;
+        }
+        
+        .pricing-plans {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: 300px;
+            text-align: center;
+        }
+        
+        .pricing-card h3 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .plan-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        
+        .plan-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .plan-features li i {
+            margin-right: 0.5rem;
+            color: var(--success);
+        }
+        
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .subscribe-btn {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            width: 100%;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+            
+            .user-section {
+                margin-top: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .pricing-plans {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-book"></i>
+                <span>Fajao Exam Bank</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#exams">Exams</a></li>
+                    <li><a href="#upload">Upload</a></li>
+                    <li><a href="#premium">Go Premium</a></li>
+                </ul>
+            </nav>
+            <div class="user-section">
+                <div class="user-info" id="userInfo" style="display: none;">
+                    <div class="user-avatar" id="userAvatar">U</div>
+                    <span id="userName">User</span>
+                </div>
+                <div class="auth-buttons" id="authButtons">
+                    <button id="loginBtn">Login</button>
+                    <button id="registerBtn">Register</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Access & Share Quality Exam Materials</h1>
+            <p>Fajao Exam Bank is a community-driven platform where students can access and contribute exam papers, study notes, and other educational resources with premium content options.</p>
+            <div class="search-bar">
+                <input type="text" id="globalSearch" placeholder="Search for exams by subject, form, or exam type...">
+                <button onclick="performSearch()"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-search"></i>
+                    <h3>Find Exams</h3>
+                    <p>Browse through our extensive collection of exam materials from various subjects and forms. Access free content or upgrade to premium for exclusive materials.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-download"></i>
+                    <h3>Download</h3>
+                    <p>Download exam papers, answer keys, and study materials to help with your preparation. Premium users get unlimited downloads and exclusive content.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-upload"></i>
+                    <h3>Contribute & Earn</h3>
+                    <p>Share your own exam materials to help other students and earn rewards. Premium contributors get revenue share from their content downloads.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Exam List Section -->
+    <section class="exam-section" id="exams">
+        <div class="container">
+            <h2 class="section-title">Available Exams</h2>
+            
+            <div class="exam-filters">
+                <select class="filter-select" id="subjectFilter">
+                    <option>All Subjects</option>
+                    <option>Mathematics</option>
+                    <option>Physics</option>
+                    <option>Computer Science</option>
+                    <option>Biology</option>
+                    <option>Chemistry</option>
+                    <option>English</option>
+                    <option>Kiswahili</option>
+                    <option>CRE</option>
+                    <option>History</option>
+                    <option>Geography</option>
+                </select>
+                
+                <select class="filter-select" id="formFilter">
+                    <option>All Forms</option>
+                    <option>Form 1</option>
+                    <option>Form 2</option>
+                    <option>Form 3</option>
+                    <option>Form 4</option>
+                </select>
+                
+                <select class="filter-select" id="typeFilter">
+                    <option>All Types</option>
+                    <option>End of Term</option>
+                    <option>Midterm</option>
+                    <option>Opener Exam</option>
+                    <option>Assignment</option>
+                </select>
+
+                <select class="filter-select" id="accessFilter">
+                    <option>All Access Levels</option>
+                    <option>Free</option>
+                    <option>Premium</option>
+                </select>
+            </div>
+            
+            <div class="exam-grid" id="examGrid">
+                <!-- Exams will be dynamically loaded here -->
+                <div class="no-exams" style="grid-column: 1 / -1; text-align: center; padding: 2rem;">
+                    <i class="fas fa-search" style="font-size: 3rem; color: #ccc; margin-bottom: 1rem;"></i>
+                    <h3>No exams found</h3>
+                    <p>Exams will appear here once they are uploaded to the system.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upload Section -->
+    <section class="upload-section" id="upload">
+        <div class="container">
+            <h2 class="section-title">Upload Exam Material</h2>
+            
+            <div class="upload-form">
+                <div class="form-group">
+                    <label for="examTitle">Exam Title</label>
+                    <input type="text" id="examTitle" class="form-control" placeholder="e.g., English Form 2 End of Term 2">
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <select id="subject" class="form-control">
+                        <option>Mathematics</option>
+                        <option>Physics</option>
+                        <option>Computer Science</option>
+                        <option>Biology</option>
+                        <option>Chemistry</option>
+                        <option>English</option>
+                        <option>Kiswahili</option>
+                        <option>CRE</option>
+                        <option>History</option>
+                        <option>Geography</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="formLevel">Form</label>
+                    <select id="formLevel" class="form-control">
+                        <option>Form 1</option>
+                        <option>Form 2</option>
+                        <option>Form 3</option>
+                        <option>Form 4</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="examType">Exam Type</label>
+                    <select id="examType" class="form-control">
+                        <option>End of Term</option>
+                        <option>Midterm</option>
+                        <option>Opener Exam</option>
+                        <option>Assignment</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="isPremium">Access Level</label>
+                    <select id="isPremium" class="form-control">
+                        <option value="false">Free</option>
+                        <option value="true">Premium</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="examFile">Upload File (PDF, DOC, PPT)</label>
+                    <input type="file" id="examFile" class="form-control">
+                </div>
+                
+                <button type="submit" class="submit-btn" id="uploadBtn">Upload Exam</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Section -->
+    <section class="premium-section" id="premium">
+        <div class="container">
+            <h2 class="section-title">Upgrade to Premium</h2>
+            <p>Get unlimited access to our premium exam materials and exclusive features</p>
+            
+            <div class="pricing-plans">
+                <div class="pricing-card">
+                    <h3>Monthly Plan</h3>
+                    <div class="price">KSh 500</div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Unlimited downloads</li>
+                        <li><i class="fas fa-check"></i> Access to premium content</li>
+                        <li><i class="fas fa-check"></i> Ad-free experience</li>
+                        <li><i class="fas fa-check"></i> Priority support</li>
+                    </ul>
+                    <button class="subscribe-btn" data-plan="monthly">Subscribe Now</button>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Annual Plan</h3>
+                    <div class="price">KSh 5,000</div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Everything in Monthly</li>
+                        <li><i class="fas fa-check"></i> Save 17% compared to monthly</li>
+                        <li><i class="fas fa-check"></i> Exclusive content</li>
+                        <li><i class="fas fa-check"></i> Free contributor status</li>
+                    </ul>
+                    <button class="subscribe-btn" data-plan="annual">Subscribe Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Fajao Exam Bank</h3>
+                    <p>Fajao Exam Bank is a student-driven platform for sharing educational resources to help students excel in their studies with premium monetization options.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#exams">Browse Exams</a></li>
+                        <li><a href="#upload">Upload</a></li>
+                        <li><a href="#premium">Premium Plans</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Email: contact@fajaobank.co.ke</p>
+                    <p>Phone: +254 712 345 678</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Fajao Exam Bank. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Login</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" class="form-control" required>
+                </div>
+                <button type="submit" class="submit-btn">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Register</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="registerName">Full Name</label>
+                    <input type="text" id="registerName" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Password</label>
+                    <input type="password" id="registerPassword" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" class="form-control" required>
+                </div>
+                <button type="submit" class="submit-btn">Register</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div class="modal" id="paymentModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Upgrade to Premium</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div id="paymentContent">
+                <p>You are subscribing to the <span id="selectedPlan"></span> plan</p>
+                <p>Total: <span id="planPrice"></span></p>
+                
+                <div class="form-group">
+                    <label>Select Payment Method</label>
+                    <select id="paymentMethod" class="form-control">
+                        <option value="mpesa">M-Pesa</option>
+                        <option value="card">Credit Card</option>
+                        <option value="bank">Bank Transfer</option>
+                    </select>
+                </div>
+                
+                <div id="mpesaFields" class="payment-fields">
+                    <div class="form-group">
+                        <label for="phoneNumber">Phone Number</label>
+                        <input type="tel" id="phoneNumber" class="form-control" placeholder="e.g., 254712345678">
+                    </div>
+                </div>
+                
+                <div id="cardFields" class="payment-fields" style="display: none;">
+                    <div class="form-group">
+                        <label for="cardNumber">Card Number</label>
+                        <input type="text" id="cardNumber" class="form-control" placeholder="1234 5678 9012 3456">
+                    </div>
+                    <div class="form-group">
+                        <label for="expiryDate">Expiry Date</label>
+                        <input type="text" id="expiryDate" class="form-control" placeholder="MM/YY">
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" class="form-control" placeholder="123">
+                    </div>
+                </div>
+                
+                <button id="processPayment" class="submit-btn">Process Payment</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // API Base URL - Update this to your backend URL
+        const API_BASE_URL = 'http://localhost:5000/api';
+        
+        // State management
+        let currentUser = null;
+        let exams = [];
+        let selectedPlan = null;
+
+        // DOM Elements
+        const loginBtn = document.getElementById('loginBtn');
+        const registerBtn = document.getElementById('registerBtn');
+        const userInfo = document.getElementById('userInfo');
+        const authButtons = document.getElementById('authButtons');
+        const userAvatar = document.getElementById('userAvatar');
+        const userName = document.getElementById('userName');
+        const loginModal = document.getElementById('loginModal');
+        const registerModal = document.getElementById('registerModal');
+        const paymentModal = document.getElementById('paymentModal');
+        const closeButtons = document.querySelectorAll('.close-btn');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const examGrid = document.getElementById('examGrid');
+        const uploadBtn = document.getElementById('uploadBtn');
+        const subscribeButtons = document.querySelectorAll('.subscribe-btn');
+        const paymentMethod = document.getElementById('paymentMethod');
+        const processPaymentBtn = document.getElementById('processPayment');
+        const selectedPlanElement = document.getElementById('selectedPlan');
+        const planPriceElement = document.getElementById('planPrice');
+        const globalSearch = document.getElementById('globalSearch');
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is logged in
+            checkAuthStatus();
+            
+            // Load exams
+            loadExams();
+            
+            // Auth buttons
+            loginBtn.addEventListener('click', () => showModal(loginModal));
+            registerBtn.addEventListener('click', () => showModal(registerModal));
+            
+            // Close modals
+            closeButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    hideAllModals();
+                });
+            });
+            
+            // Auth forms
+            loginForm.addEventListener('submit', handleLogin);
+            registerForm.addEventListener('submit', handleRegister);
+            
+            // Upload exam
+            uploadBtn.addEventListener('click', handleUpload);
+            
+            // Subscribe buttons
+            subscribeButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    selectedPlan = this.dataset.plan;
+                    showPaymentModal(selectedPlan);
+                });
+            });
+            
+            // Payment method change
+            paymentMethod.addEventListener('change', togglePaymentFields);
+            
+            // Process payment
+            processPaymentBtn.addEventListener('click', handlePayment);
+            
+            // Close modals when clicking outside
+            window.addEventListener('click', function(event) {
+                if (event.target.classList.contains('modal')) {
+                    hideAllModals();
+                }
+            });
+            
+            // Filter exams
+            document.getElementById('subjectFilter').addEventListener('change', filterExams);
+            document.getElementById('formFilter').addEventListener('change', filterExams);
+            document.getElementById('typeFilter').addEventListener('change', filterExams);
+            document.getElementById('accessFilter').addEventListener('change', filterExams);
+            
+            // Global search
+            globalSearch.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+        });
+
+        // Search function
+        function performSearch() {
+            const searchQuery = globalSearch.value.trim();
+            if (searchQuery) {
+                loadExams(searchQuery);
+            }
+        }
+
+        // Modal functions
+        function showModal(modal) {
+            hideAllModals();
+            modal.style.display = 'flex';
+        }
+
+        function hideAllModals() {
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.style.display = 'none';
+            });
+        }
+
+        function showPaymentModal(plan) {
+            selectedPlan = plan;
+            const price = plan === 'monthly' ? 'KSh 500' : 'KSh 5,000';
+            selectedPlanElement.textContent = plan;
+            planPriceElement.textContent = price;
+            showModal(paymentModal);
+        }
+
+        function togglePaymentFields() {
+            const method = paymentMethod.value;
+            document.querySelectorAll('.payment-fields').forEach(field => {
+                field.style.display = 'none';
+            });
+            document.getElementById(method + 'Fields').style.display = 'block';
+        }
+
+        // API Functions
+        async function checkAuthStatus() {
+            try {
+                const token = localStorage.getItem('token');
+                if (!token) return;
+                
+                const response = await fetch(`${API_BASE_URL}/auth/me`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                
+                if (response.ok) {
+                    const user = await response.json();
+                    currentUser = user;
+                    updateUIForAuth(user);
+                } else {
+                    localStorage.removeItem('token');
+                }
+            } catch (error) {
+                console.error('Auth check failed:', error);
+            }
+        }
+
+        async function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    localStorage.setItem('token', data.token);
+                    currentUser = data.user;
+                    updateUIForAuth(data.user);
+                    hideAllModals();
+                    showNotification('Login successful!', 'success');
+                } else {
+                    showNotification(data.message || 'Login failed', 'error');
+                }
+            } catch (error) {
+                showNotification('An error occurred during login', 'error');
+            }
+        }
+
+        async function handleRegister(e) {
+            e.preventDefault();
+            const name = document.getElementById('registerName').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                showNotification('Passwords do not match', 'error');
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/register`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name, email, password })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    showNotification('Registration successful! Please login.', 'success');
+                    registerForm.reset();
+                    hideAllModals();
+                    showModal(loginModal);
+                } else {
+                    showNotification(data.message || 'Registration failed', 'error');
+                }
+            } catch (error) {
+                showNotification('An error occurred during registration', 'error');
+            }
+        }
+
+        async function loadExams(searchQuery = '') {
+            try {
+                let url = `${API_BASE_URL}/exams`;
+                if (searchQuery) {
+                    url += `?q=${encodeURIComponent(searchQuery)}`;
+                }
+                
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                if (response.ok) {
+                    exams = data.exams;
+                    renderExams(exams);
+                } else {
+                    showNotification('Failed to load exams', 'error');
+                }
+            } catch (error) {
+                showNotification('An error occurred while loading exams', 'error');
+            }
+        }
+
+        async function handleUpload(e) {
+            e.preventDefault();
+            
+            const token = localStorage.getItem('token');
+            if (!token) {
+                showNotification('Please login to upload exams', 'error');
+                showModal(loginModal);
+                return;
+            }
+            
+            const title = document.getElementById('examTitle').value;
+            const subject = document.getElementById('subject').value;
+            const formLevel = document.getElementById('formLevel').value;
+            const examType = document.getElementById('examType').value;
+            const isPremium = document.getElementById('isPremium').value === 'true';
+            const fileInput = document.getElementById('examFile');
+            const file = fileInput.files[0];
+            
+            if (!file) {
+                showNotification('Please select a file to upload', 'error');
+                return;
+            }
+            
+            const formData = new FormData();
+            formData.append('title', title);
+            formData.append('subject', subject);
+            formData.append('form_level', formLevel);
+            formData.append('exam_type', examType);
+            formData.append('is_premium', isPremium);
+            formData.append('file', file);
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/exams/upload`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: formData
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    showNotification('Exam uploaded successfully!', 'success');
+                    document.querySelector('.upload-form').reset();
+                    loadExams(); // Reload exams list
+                } else {
+                    showNotification(data.message || 'Upload failed', 'error');
+                }
+            } catch (error) {
+                showNotification('An error occurred during upload', 'error');
+            }
+        }
+
+        async function downloadExam(examId, isPremium) {
+            const token = localStorage.getItem('token');
+            
+            if (isPremium && (!currentUser || !currentUser.is_premium)) {
+                showNotification('This is a premium exam. Please upgrade to download.', 'error');
+                showModal(paymentModal);
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/exams/download/${examId}`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                
+                if (response.ok) {
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `exam_${examId}.pdf`;
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    document.body.removeChild(a);
+                } else {
+                    const data = await response.json();
+                    showNotification(data.message || 'Download failed', 'error');
+                }
+            } catch (error) {
+                showNotification('An error occurred during download', 'error');
+            }
+        }
+
+        async function handlePayment() {
+            const method = paymentMethod.value;
+            let paymentData = {};
+            
+            if (method === 'mpesa') {
+                const phone = document.getElementById('phoneNumber').value;
+                if (!phone) {
+                    showNotification('Please enter your phone number', 'error');
+                    return;
+                }
+                paymentData = { method: 'mpesa', phone_number: phone };
+            } else if (method === 'card') {
+                const cardNumber = document.getElementById('cardNumber').value;
+                const expiry = document.getElementById('expiryDate').value;
+                const cvv = document.getElementById('cvv').value;
+                
+                if (!cardNumber || !expiry || !cvv) {
+                    showNotification('Please fill all card details', 'error');
+                    return;
+                }
+                
+                paymentData = { 
+                    method: 'card', 
+                    card_number: cardNumber, 
+                    expiry_date: expiry, 
+                    cvv: cvv 
+                };
+            } else if (method === 'bank') {
+                paymentData = { method: 'bank' };
+            }
+            
+            try {
+                const token = localStorage.getItem('token');
+                const response = await fetch(`${API_BASE_URL}/payments/subscribe`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({
+                        plan: selectedPlan,
+                        ...paymentData
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    showNotification('Payment processed successfully! Your account has been upgraded.', 'success');
+                    hideAllModals();
+                    // Refresh user data to reflect premium status
+                    checkAuthStatus();
+                } else {
+                    showNotification(data.message || 'Payment failed', 'error');
+                }
+            } catch (error) {
+                showNotification('An error occurred during payment processing', 'error');
+            }
+        }
+
+        // UI Functions
+        function updateUIForAuth(user) {
+            if (user) {
+                authButtons.style.display = 'none';
+                userInfo.style.display = 'flex';
+                userName.textContent = user.name;
+                userAvatar.textContent = user.name.charAt(0).toUpperCase();
+                
+                // Show upload section only for authenticated users
+                document.getElementById('upload').style.display = 'block';
+            } else {
+                authButtons.style.display = 'flex';
+                userInfo.style.display = 'none';
+                
+                // Hide upload section for non-authenticated users
+                document.getElementById('upload').style.display = 'none';
+            }
+        }
+
+        function renderExams(examsList) {
+            examGrid.innerHTML = '';
+            
+            if (examsList.length === 0) {
+                examGrid.innerHTML = '<p class="no-exams">No exams found matching your criteria.</p>';
+                return;
+            }
+            
+            examsList.forEach(exam => {
+                const isPremium = exam.is_premium;
+                const canDownload = !isPremium || (currentUser && currentUser.is_premium);
+                
+                const examCard = document.createElement('div');
+                examCard.className = 'exam-card';
+                examCard.innerHTML = `
+                    ${isPremium ? '<div class="premium-badge">Premium</div>' : ''}
+                    <div class="exam-card-header">
+                        <h3>${exam.title}</h3>
+                    </div>
+                    <div class="exam-card-body">
+                        <p><strong>Subject:</strong> ${exam.subject}</p>
+                        <p><strong>Form:</strong> ${exam.form_level}</p>
+                        <p><strong>Type:</strong> ${exam.exam_type}</p>
+                        <p><strong>Uploaded by:</strong> ${exam.uploaded_by_name}</p>
+                    </div>
+                    <div class="exam-card-footer">
+                        <span>${exam.file_type}, ${formatFileSize(exam.file_size)}</span>
+                        <button class="download-btn ${isPremium ? 'premium' : ''}" 
+                                onclick="downloadExam(${exam.id}, ${isPremium})"
+                                ${!canDownload ? 'disabled' : ''}>
+                            ${isPremium ? 'Premium Download' : 'Download'}
+                        </button>
+                    </div>
+                `;
+                examGrid.appendChild(examCard);
+            });
+        }
+
+        function filterExams() {
+            const subject = document.getElementById('subjectFilter').value;
+            const form = document.getElementById('formFilter').value;
+            const type = document.getElementById('typeFilter').value;
+            const access = document.getElementById('accessFilter').value;
+            
+            let filteredExams = exams;
+            
+            if (subject !== 'All Subjects') {
+                filteredExams = filteredExams.filter(exam => 
+                    exam.subject === subject);
+            }
+            
+            if (form !== 'All Forms') {
+                filteredExams = filteredExams.filter(exam => exam.form_level === form);
+            }
+            
+            if (type !== 'All Types') {
+                filteredExams = filteredExams.filter(exam => exam.exam_type === type);
+            }
+            
+            if (access !== 'All Access Levels') {
+                const isPremium = access === 'Premium';
+                filteredExams = filteredExams.filter(exam => exam.is_premium === isPremium);
+            }
+            
+            renderExams(filteredExams);
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes < 1024) return bytes + ' bytes';
+            else if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+            else return (bytes / 1048576).toFixed(1) + ' MB';
+        }
+
+        function showNotification(message, type) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 15px 20px;
+                border-radius: 4px;
+                color: white;
+                z-index: 10000;
+                font-weight: 500;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            `;
+            
+            if (type === 'success') {
+                notification.style.background = 'var(--success)';
+            } else if (type === 'error') {
+                notification.style.background = 'var(--danger)';
+            } else {
+                notification.style.background = 'var(--primary)';
+            }
+            
+            document.body.appendChild(notification);
+            
+            // Remove notification after 3 seconds
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transition = 'opacity 0.5s';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 500);
+            }, 3000);
+        }
+
+        // Make downloadExam function available globally
+        window.downloadExam = downloadExam;
+        window.performSearch = performSearch;
+    </script>
+</body>
+</html>
